@@ -10,3 +10,4 @@ Project|Challenges Completed
 [Storm Viewer](Project1_StormViewer)|:white_check_mark:
 [Guess the Flag](Project2_GuessTheFlag)|:white_check_mark:
 [Social Media](Project3_SocialMedia)|:white_check_mark:
+[Easy Browser](Project4_EasyBrowser)|

@@ -13,6 +13,7 @@
 		2FDFDD0A26D94CF600B831AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FDFDD0826D94CF600B831AE /* Main.storyboard */; };
 		2FDFDD0C26D94CFA00B831AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FDFDD0B26D94CFA00B831AE /* Assets.xcassets */; };
 		2FDFDD0F26D94CFA00B831AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FDFDD0D26D94CFA00B831AE /* LaunchScreen.storyboard */; };
+		2FDFDD1726DD40A700B831AE /* SiteTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDFDD1626DD40A600B831AE /* SiteTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2FDFDD0B26D94CFA00B831AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FDFDD0E26D94CFA00B831AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FDFDD1026D94CFA00B831AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FDFDD1626DD40A600B831AE /* SiteTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteTableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2FDFDD0226D94CF600B831AE /* AppDelegate.swift */,
 				2FDFDD0426D94CF600B831AE /* SceneDelegate.swift */,
 				2FDFDD0626D94CF600B831AE /* ViewController.swift */,
+				2FDFDD1626DD40A600B831AE /* SiteTableTableViewController.swift */,
 				2FDFDD0826D94CF600B831AE /* Main.storyboard */,
 				2FDFDD0B26D94CFA00B831AE /* Assets.xcassets */,
 				2FDFDD0D26D94CFA00B831AE /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FDFDD0726D94CF600B831AE /* ViewController.swift in Sources */,
+				2FDFDD1726DD40A700B831AE /* SiteTableTableViewController.swift in Sources */,
 				2FDFDD0326D94CF600B831AE /* AppDelegate.swift in Sources */,
 				2FDFDD0526D94CF600B831AE /* SceneDelegate.swift in Sources */,
 			);
