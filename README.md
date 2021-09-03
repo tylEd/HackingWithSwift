@@ -14,3 +14,5 @@ I attempted all challenges at the end of each assignment. The final code for eac
 5|[Word Scramble](Project5_WordScramble)|:white_check_mark:
 6|Auto Layout [A](Project6a_AutoLayout) [B](Project6b_AutoLayout)|:white_check_mark:
 7|[Whitehouse Petitions](Project7_WhitehousePetitions)|:white_check_mark:
+8|[7 Swifty Words](Project8_7SwiftyWords)|:white_check_mark:
+
