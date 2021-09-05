@@ -7,7 +7,69 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class ViewController: UICollectionViewController {
+    var pictures = [String]()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "Storm Viewer"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        performSelector(inBackground: #selector(loadPictures), with: nil)
+    }
+    
+    @objc func loadPictures() {
+        let fm = FileManager.default
+        let path = Bundle.main.resourcePath!
+        let items = try! fm.contentsOfDirectory(atPath: path)
+        
+        for item in items {
+            if item.hasPrefix("nssl") {
+                pictures.append(item)
+            }
+        }
+        
+        //NOTE: Challenge 2
+        pictures.sort()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pictures.count
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Picture", for: indexPath) as? PictureCell else {
+            fatalError("Unable to dequeue PictureCell")
+        }
+        
+        let path = Bundle.main.resourceURL!
+        let url = path.appendingPathComponent(pictures[indexPath.item])
+        cell.imageView.image = UIImage(contentsOfFile: url.path)
+
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.selectedImage = pictures[indexPath.row]
+            
+            //NOTE: Challenge 3
+            vc.imageIndex = indexPath.row
+            vc.imageCount = pictures.count
+
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+
+}
+
+//MARK: Original UITableViewController Version
+class ViewController_TableViewController: UITableViewController {
     var pictures = [String]()
 
     override func viewDidLoad() {
@@ -61,4 +123,3 @@ class ViewController: UITableViewController {
     }
 
 }
-

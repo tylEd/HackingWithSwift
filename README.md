@@ -15,4 +15,6 @@ I attempted all challenges at the end of each assignment. The final code for eac
 6|Auto Layout [A](Project6a_AutoLayout) [B](Project6b_AutoLayout)|:white_check_mark:
 7|[Whitehouse Petitions](Project7_WhitehousePetitions)|:white_check_mark:
 8|[7 Swifty Words](Project8_7SwiftyWords)|:white_check_mark:
+9|[Grand Central Dispatch](Project9_GrandCentralDispatch)|:white_check_mark:
+10|[Names to Faces](Project10_NamesToFaces)|:white_check_mark:
 
