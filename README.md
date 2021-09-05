@@ -17,4 +17,5 @@ I attempted all challenges at the end of each assignment. The final code for eac
 8|[7 Swifty Words](Project8_7SwiftyWords)|:white_check_mark:
 9|[Grand Central Dispatch](Project9_GrandCentralDispatch)|:white_check_mark:
 10|[Names to Faces](Project10_NamesToFaces)|:white_check_mark:
+11|[Pachinko](Project11_Pachinko)|:white_check_mark:
 
