@@ -27,12 +27,19 @@ class ViewController: UITableViewController {
             allWords = ["silkworm"]
         }
         
-        startGame()
+        let defaults = UserDefaults.standard
+        if defaults.has(key: "title") {
+            title = defaults.string(forKey: "title")
+            usedWords = defaults.object(forKey: "usedWords") as? [String] ?? [String]()
+        } else {
+            startGame()
+        }
     }
     
     func startGame() {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
+        save()
         tableView.reloadData()
     }
     
@@ -76,6 +83,7 @@ class ViewController: UITableViewController {
                     
                     let indexPath = IndexPath(row: 0, section: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
+                    save()
                     
                     return
                 } else {
@@ -133,5 +141,17 @@ class ViewController: UITableViewController {
         present(ac, animated: true)
     }
 
+    func save() {
+        let defaults = UserDefaults.standard
+        defaults.set(title, forKey: "title")
+        defaults.set(usedWords, forKey: "usedWords")
+    }
+    
+}
+
+extension UserDefaults {
+    func has(key: String) -> Bool {
+        return object(forKey: key) != nil
+    }
 }
 

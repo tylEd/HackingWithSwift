@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     
     static let maxCount = 10
     
+    var highscore = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +37,9 @@ class ViewController: UIViewController {
         askQuestion()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(scorePopup))
+        
+        let defaults = UserDefaults.standard
+        highscore = defaults.integer(forKey: "highscore")
     }
     
     func askQuestion(action: UIAlertAction! = nil) {
@@ -70,7 +75,13 @@ class ViewController: UIViewController {
 
         if count == ViewController.maxCount {
             // Final Message
-            let ac = UIAlertController(title: title, message: "Your final score is \(score) / \(count)", preferredStyle: .alert)
+            var highscoreMsg = ""
+            if score > highscore {
+                highscoreMsg = "That's a new highscore!"
+                save()
+            }
+            
+            let ac = UIAlertController(title: title, message: "Your final score is \(score) / \(count). \(highscoreMsg)", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Play Again", style: .default, handler: retry))
             present(ac, animated: true)
         } else {
@@ -85,6 +96,11 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: "Your score is \(score) / \(count)", message: "\(ViewController.maxCount - count) to go!", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         present(ac, animated: true)
+    }
+    
+    func save() {
+        let defaults = UserDefaults.standard
+        defaults.set(highscore, forKey: "highscore")
     }
     
 }

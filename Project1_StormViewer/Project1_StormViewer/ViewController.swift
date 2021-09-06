@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UICollectionViewController {
     var pictures = [String]()
+    var viewCount = [String:Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +18,19 @@ class ViewController: UICollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         performSelector(inBackground: #selector(loadPictures), with: nil)
+        
+        let defaults = UserDefaults.standard
+        if let savedViewCount = defaults.object(forKey: "viewCount") as? Data {
+            let decoder = JSONDecoder()
+            
+            do {
+                viewCount = try decoder.decode([String:Int].self, from: savedViewCount)
+            } catch {
+                print("Failed to load viewCount.")
+            }
+        }
+        
+        print(viewCount)
     }
     
     @objc func loadPictures() {
@@ -47,22 +61,54 @@ class ViewController: UICollectionViewController {
             fatalError("Unable to dequeue PictureCell")
         }
         
+        let picture = pictures[indexPath.item]
+        
         let path = Bundle.main.resourceURL!
-        let url = path.appendingPathComponent(pictures[indexPath.item])
+        let url = path.appendingPathComponent(picture)
         cell.imageView.image = UIImage(contentsOfFile: url.path)
+        
+        if viewCount.keys.contains(picture) {
+            let count = viewCount[picture] ?? 1
+            cell.viewCountLabel.text = "  \(count) View\(count > 1 ? "" : "s")  "
+        } else {
+            cell.viewCountLabel.text = ""
+        }
+        cell.viewCountLabel.layer.masksToBounds = true
+        cell.viewCountLabel.layer.cornerRadius = 5
 
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.row]
+            let picture = pictures[indexPath.item]
+            vc.selectedImage = picture
             
             //NOTE: Challenge 3
             vc.imageIndex = indexPath.row
             vc.imageCount = pictures.count
+            
+            // Increment viewCount for this image here
+            if viewCount.keys.contains(picture) {
+                viewCount[picture]! += 1
+            } else {
+                viewCount[picture] = 1
+            }
+            save()
+            collectionView.reloadItems(at: [indexPath])
 
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func save() {
+        let encoder = JSONEncoder()
+        
+        if let saveData = try? encoder.encode(viewCount) {
+            let defaults = UserDefaults.standard
+            defaults.set(saveData, forKey: "viewCount")
+        } else {
+            print("Failed to save viewCount.")
         }
     }
 

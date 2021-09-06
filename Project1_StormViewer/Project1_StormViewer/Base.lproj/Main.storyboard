@@ -31,22 +31,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ecG-AS-cNO">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ecG-AS-cNO">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="ecG-AS-cNO" secondAttribute="height" multiplier="1:1" id="gGr-mN-C3m"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWA-DR-LqW">
+                                            <rect key="frame" x="8" y="102" width="37.5" height="18"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="ecG-AS-cNO" firstAttribute="leading" secondItem="b9F-GO-Xg2" secondAttribute="leading" id="Ez4-wt-j6x"/>
+                                        <constraint firstItem="dWA-DR-LqW" firstAttribute="leading" secondItem="b9F-GO-Xg2" secondAttribute="leading" constant="8" id="N5p-kD-pTw"/>
                                         <constraint firstAttribute="trailing" secondItem="ecG-AS-cNO" secondAttribute="trailing" id="ZMT-av-7PU"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dWA-DR-LqW" secondAttribute="trailing" constant="20" symbolic="YES" id="cMM-aN-Ke6"/>
                                         <constraint firstItem="ecG-AS-cNO" firstAttribute="top" secondItem="b9F-GO-Xg2" secondAttribute="top" id="dOx-zR-fPl"/>
                                         <constraint firstAttribute="bottom" secondItem="ecG-AS-cNO" secondAttribute="bottom" id="sWH-av-bLL"/>
+                                        <constraint firstAttribute="bottom" secondItem="dWA-DR-LqW" secondAttribute="bottom" constant="8" id="yeO-Cx-eKc"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="imageView" destination="ecG-AS-cNO" id="oJq-Vj-hHF"/>
+                                    <outlet property="viewCountLabel" destination="dWA-DR-LqW" id="JAI-KL-o9n"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
