@@ -21,3 +21,4 @@ I attempted all challenges at the end of each assignment. The final code for eac
 12|UserDefaults [A](Project12a_UserDefaults) [B](Project12b_UserDefaults)|:white_check_mark:
 13|[Instafilter](Project13_Instafilter)|1&2
 14|[Whack-a-Penguin](Project14_Whack-a-Penguin)|
+15|[Animation](Project15_Animation)|:white_check_mark:

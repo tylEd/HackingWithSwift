@@ -50,6 +50,10 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
+        button1.transform = .identity
+        button2.transform = .identity
+        button3.transform = .identity
+
         title = "\(countries[correctAnswer].uppercased()) - Score: \(score)"
     }
     
@@ -61,8 +65,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: []) {
+            sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
+
+        // Answer and scoring
         var title: String
-        
         if sender.tag == correctAnswer {
             title = "Correct"
             score += 1
