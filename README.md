@@ -1,7 +1,7 @@
 # Hacking with Swift (UIKit)
 
 My code from following the [Hacking with Swift iOS](https://www.hackingwithswift.com/read) course on UIKit.
-I attempted all challenges at the end of each assignment. The final code for each project reflects all challenges that involved that project.
+The final code for each project reflects all challenges attempted.
 
 ## Completed Projects
 
@@ -22,3 +22,4 @@ I attempted all challenges at the end of each assignment. The final code for eac
 13|[Instafilter](Project13_Instafilter)|1&2
 14|[Whack-a-Penguin](Project14_Whack-a-Penguin)|
 15|[Animation](Project15_Animation)|:white_check_mark:
+16|[Capital Cities](Project16_CapitalCities)|:white_check_mark:
