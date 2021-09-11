@@ -23,3 +23,4 @@ The final code for each project reflects all challenges attempted.
 14|[Whack-a-Penguin](Project14_Whack-a-Penguin)|
 15|[Animation](Project15_Animation)|:white_check_mark:
 16|[Capital Cities](Project16_CapitalCities)|:white_check_mark:
+17|[Space Race](Project17_SpaceRace)|:white_check_mark:
