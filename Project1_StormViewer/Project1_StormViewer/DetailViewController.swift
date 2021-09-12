@@ -19,6 +19,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(selectedImage != nil, "DetailViewController: Image not recieved.")
+
         //NOTE: Challenge 3
         if let index = imageIndex {
             if let count = imageCount {
