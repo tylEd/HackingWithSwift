@@ -26,3 +26,4 @@ The final code for each project reflects all challenges attempted.
 17|[Space Race](Project17_SpaceRace)|:white_check_mark:
 18|[Debugging](Project18_Debugging)|:white_check_mark:
 19|[JavaScript Injection](Project19_JavaScriptInjection)|1&2
+20|[Fireworks Night](Project20_FireworksNight)|:white_check_mark:
