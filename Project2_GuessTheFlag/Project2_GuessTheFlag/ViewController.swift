@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
     @IBOutlet var button1: UIButton!
@@ -23,6 +24,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        manageNotifications()
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
         button1.transform = .identity
         button2.transform = .identity
         button3.transform = .identity
-
+        
         title = "\(countries[correctAnswer].uppercased()) - Score: \(score)"
     }
     
@@ -68,7 +71,7 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: []) {
             sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }
-
+        
         // Answer and scoring
         var title: String
         if sender.tag == correctAnswer {
@@ -80,7 +83,7 @@ class ViewController: UIViewController {
         }
         
         count += 1
-
+        
         if count == ViewController.maxCount {
             // Final Message
             var highscoreMsg = ""
@@ -113,3 +116,52 @@ class ViewController: UIViewController {
     
 }
 
+//NOTE: Challenge from Project 21
+extension ViewController: UNUserNotificationCenterDelegate {
+    func manageNotifications() {
+        requestAuthorization() //NOTE: calls scheduleDailies if granted
+    }
+    
+    func requestAuthorization() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] granted, error in
+            if granted {
+                center.delegate = self ?? nil
+                self?.scheduleDailies()
+            }
+        }
+    }
+    
+    func scheduleDailies() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        center.removeAllDeliveredNotifications()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Remember to This Game"
+        content.body = "It was project 2 in HWS"
+        content.categoryIdentifier = "reminder"
+        content.userInfo = [:]
+        content.sound = UNNotificationSound.default
+        
+        for i in 1...7 {
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: .days(i), repeats: false)
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Launched by notification")
+        scheduleDailies()
+        completionHandler()
+    }
+    
+}
+
+extension TimeInterval {
+    static func days(_ days: Int) -> TimeInterval {
+        //return TimeInterval(86_400 * days)
+        return TimeInterval(10 * days)
+    }
+}

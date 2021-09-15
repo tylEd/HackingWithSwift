@@ -27,3 +27,4 @@ The final code for each project reflects all challenges attempted.
 18|[Debugging](Project18_Debugging)|:white_check_mark:
 19|[JavaScript Injection](Project19_JavaScriptInjection)|1&2
 20|[Fireworks Night](Project20_FireworksNight)|:white_check_mark:
+21|[Local Notifications](Project21_LocalNotifications)|:white_check_mark:
