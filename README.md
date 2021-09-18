@@ -30,3 +30,4 @@ The final code for each project reflects all challenges attempted.
 21|[Local Notifications](Project21_LocalNotifications)|:white_check_mark:
 22|[Detect-a-Beacon](Project22_Detect-a-Beacon)|3 (& 1 not tested)
 23|[Swifty Ninja](Project23_SwiftyNinja)|:white_check_mark:
+24|[Swift Strings](Project24_SwiftStrings)|:white_check_mark:
