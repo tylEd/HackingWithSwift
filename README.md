@@ -32,3 +32,4 @@ The final code for each project reflects all challenges attempted.
 23|[Swifty Ninja](Project23_SwiftyNinja)|:white_check_mark:
 24|[Swift Strings](Project24_SwiftStrings)|:white_check_mark:
 25|[Selfie Share](Project25_SelfieShare)|:white_check_mark:
+26|[Marble Maze](Project26_MarbleMaze)|:white_check_mark:
