@@ -50,25 +50,39 @@ class DetailViewController: UIViewController {
     }
     
     @objc func shareTapped() {
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+        guard let image = imageView.image else {
             print("No image found")
             return
         }
+
+        let overlayImage = renderOverlay(for: image)
         
-        let vc = UIActivityViewController(activityItems: [ image, selectedImage ?? "" ],
+        guard let jpgData = overlayImage.jpegData(compressionQuality: 0.8) else {
+            print("Failed to get jpeg data from image")
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [ jpgData, selectedImage ?? "" ],
                                           applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func renderOverlay(for image: UIImage) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: image.size)
+        
+        let image = renderer.image { ctx in
+            image.draw(at: .zero)
+            
+            // Text
+            NSAttributedString(string: "From Storm Viewer",
+                               attributes: [
+                                .font: UIFont.systemFont(ofSize: 36),
+                               ]
+            ).draw(with: CGRect(x: 16, y: 16, width: image.size.width, height: image.size.height), options: .usesLineFragmentOrigin, context: nil)
+        }
+        
+        return image
     }
-    */
 
 }
