@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var people = [Person]()
@@ -25,6 +26,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
                 print("Failed to load people.")
             }
         }
+        
+        loadProject28Challenge()
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -130,4 +133,50 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         }
     }
     
+}
+
+//MARK: Project 28 Challenge
+
+extension ViewController {
+    
+    func loadProject28Challenge() {
+        lock()
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(lock), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+
+    @objc func authenticateTapped() {
+        let ctx = LAContext()
+        var error: NSError?
+        
+        if ctx.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify yourself!"
+            
+            ctx.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, authError in
+                DispatchQueue.main.async {
+                    if success {
+                        self?.unlock()
+                    } else {
+                        //NOTE: FaceID has it's own alert.
+                    }
+                }
+            }
+        } else {
+            let ac = UIAlertController(title: "Biometry Unavailable", message: "Your device doesn't allow biometric authentication.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
+        }
+    }
+
+    @objc func unlock() {
+        collectionView.isHidden = false
+        navigationItem.rightBarButtonItem = nil
+    }
+    
+    @objc func lock() {
+        collectionView.isHidden = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Authenticate", style: .plain, target: self, action: #selector(authenticateTapped))
+    }
+
 }

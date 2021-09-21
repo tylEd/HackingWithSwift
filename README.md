@@ -34,3 +34,4 @@ The final code for each project reflects all challenges attempted.
 25|[Selfie Share](Project25_SelfieShare)|:white_check_mark:
 26|[Marble Maze](Project26_MarbleMaze)|:white_check_mark:
 27|[Core Graphics](Project27_CoreGraphics)|:white_check_mark:
+28|[Secret Swift](Project28_SecretSwift)|:white_check_mark:<br>(3 is in Project12b)
