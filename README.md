@@ -38,3 +38,4 @@ The final code for each project reflects all challenges attempted.
 29|[Exploding Monkeys](Project29_ExplodingMonkeys)|:white_check_mark:
 30|[Instruments](Project30_Instruments)|:white_check_mark:
 31|[Multibrowser](Project31_Multibrowser)|:white_check_mark:
+32|[SwiftSearcher](Project32_SwiftSearcher)|:white_check_mark:
