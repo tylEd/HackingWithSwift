@@ -81,7 +81,7 @@ class Board: NSObject, GKGameModel {
                     return true
                 } else if squaresMatch(initialChip: chip, row: row, col: col, moveX: 1, moveY: 1) {
                     return true
-                } else if squaresMatch(initialChip: chip, row: row, col: col, moveX: 1, moveY: -1) {
+                } else if squaresMatch(initialChip: chip, row: row, col: col, moveX: -1, moveY: 1) {
                     return true
                 }
             }
@@ -105,7 +105,7 @@ class Board: NSObject, GKGameModel {
         
         return true
     }
-    
+
     //MARK: GameplayKit (and NSCopying)
     
     func copy(with zone: NSZone? = nil) -> Any {

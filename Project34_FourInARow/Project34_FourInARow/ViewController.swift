@@ -8,6 +8,13 @@
 import UIKit
 import GameplayKit
 
+enum Oponent: Int{
+    case player = 0
+    case easyAI = 4
+    case normalAI = 7
+    case hardAI = 8
+}
+
 class ViewController: UIViewController {
     @IBOutlet var columnButtons: [UIButton]!
     
@@ -16,6 +23,8 @@ class ViewController: UIViewController {
     
     var strategist: GKMinmaxStrategist!
     
+    var oponent = Oponent.normalAI
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,11 +32,28 @@ class ViewController: UIViewController {
             placedChips.append([UIView]())
         }
         
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Quit", style: .plain, target: self, action: #selector(showQuitAlert))
+        
         strategist = GKMinmaxStrategist()
-        strategist.maxLookAheadDepth = 7
+        strategist.maxLookAheadDepth = oponent.rawValue
         strategist.randomSource = nil//GKARC4RandomSource()
         
         resetBoard()
+    }
+    
+    @objc func showQuitAlert() {
+        let ac = UIAlertController(title: "Are you sure!", message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let quitAction = UIAlertAction(title: "Quit", style: .destructive) { [unowned self] (action) in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        ac.addAction(cancelAction)
+        ac.addAction(quitAction)
+        
+        present(ac, animated: true)
     }
     
     func resetBoard() {
@@ -55,11 +81,17 @@ class ViewController: UIViewController {
         
         if gameOverTitle != nil {
             let alert = UIAlertController(title: gameOverTitle, message: nil, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Play Again", style: .default) { [unowned self] (action) in
+            
+            let playAgainAction = UIAlertAction(title: "Play Again", style: .default) { [unowned self] (action) in
                 self.resetBoard()
             }
             
-            alert.addAction(alertAction)
+            let quitAction = UIAlertAction(title: "Quit", style: .default) { [unowned self] (action) in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            
+            alert.addAction(quitAction)
+            alert.addAction(playAgainAction)
             present(alert, animated: true)
             
             return
@@ -73,7 +105,7 @@ class ViewController: UIViewController {
     func updateUI() {
         title = "\(board.currentPlayer.name)'s Turn"
         
-        if board.currentPlayer.chip == .black {
+        if board.currentPlayer.chip == .black && oponent != .player {
             startAIMove()
         }
     }
@@ -133,7 +165,7 @@ class ViewController: UIViewController {
     
     func makeAIMove(in column: Int) {
         columnButtons.forEach { $0.isEnabled = true }
-        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
         
         if let row = board.nextEmptySlot(in: column) {
             board.add(chip: board.currentPlayer.chip, in: column)
@@ -148,7 +180,7 @@ class ViewController: UIViewController {
         
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.startAnimating()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: spinner)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
         
         DispatchQueue.global().async { [unowned self] in
             let strategistTime = CFAbsoluteTimeGetCurrent()

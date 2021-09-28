@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F72017327034E580066EC3E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F72017227034E580066EC3E /* StartViewController.swift */; };
+		2F72017527034E720066EC3E /* DifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F72017427034E720066EC3E /* DifficultyViewController.swift */; };
 		2FE181E4270124CD00003599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE181E3270124CD00003599 /* AppDelegate.swift */; };
 		2FE181E6270124CD00003599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE181E5270124CD00003599 /* SceneDelegate.swift */; };
 		2FE181E8270124CD00003599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE181E7270124CD00003599 /* ViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F72017227034E580066EC3E /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		2F72017427034E720066EC3E /* DifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewController.swift; sourceTree = "<group>"; };
 		2FE181E0270124CD00003599 /* Project34_FourInARow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project34_FourInARow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE181E3270124CD00003599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FE181E5270124CD00003599 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 			children = (
 				2FE181E3270124CD00003599 /* AppDelegate.swift */,
 				2FE181E5270124CD00003599 /* SceneDelegate.swift */,
+				2F72017227034E580066EC3E /* StartViewController.swift */,
+				2F72017427034E720066EC3E /* DifficultyViewController.swift */,
 				2FE181E7270124CD00003599 /* ViewController.swift */,
 				2FE181F727012C0700003599 /* Board.swift */,
 				2FE181F92701F17F00003599 /* Player.swift */,
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE181E8270124CD00003599 /* ViewController.swift in Sources */,
+				2F72017327034E580066EC3E /* StartViewController.swift in Sources */,
 				2FE181E4270124CD00003599 /* AppDelegate.swift in Sources */,
+				2F72017527034E720066EC3E /* DifficultyViewController.swift in Sources */,
 				2FE181F827012C0700003599 /* Board.swift in Sources */,
 				2FE181FA2701F17F00003599 /* Player.swift in Sources */,
 				2FE181FC2701F81C00003599 /* Move.swift in Sources */,
