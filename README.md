@@ -37,9 +37,11 @@ The final code for each project reflects all challenges attempted.
 28|[Secret Swift](Project28_SecretSwift)|:white_check_mark:<br>(3 is in Project12b)
 29|[Exploding Monkeys](Project29_ExplodingMonkeys)|:white_check_mark:
 30|[Instruments](Project30_Instruments)|:white_check_mark:
+|Bonus Projects|
 31|[Multibrowser](Project31_Multibrowser)|:white_check_mark:
 32|[SwiftSearcher](Project32_SwiftSearcher)|:white_check_mark:
 33|[What's that Whistle?](Project33_WhatsThatWhistle)<br>Unfinished: No Apple developer program account at the time of attempt|
 34|[Four in a Row](Project34_FourInARow)|:white_check_mark:
 35|[Random Numbers](Project35_RandomNumbers)|:white_check_mark:
 36|[Crashy Plane](Project36_CrashyPlane)|
+37|[Psychic Tester](Project37_PsychicTester)|
