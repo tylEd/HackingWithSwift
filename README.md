@@ -25,7 +25,7 @@ The final code for each project reflects all challenges attempted.
 16|[Capital Cities](Project16_CapitalCities)|:white_check_mark:
 17|[Space Race](Project17_SpaceRace)|:white_check_mark:
 18|[Debugging](Project18_Debugging)|:white_check_mark:
-19|[JavaScript Injection](Project19_JavaScriptInjection)|1&2
+19|[JavaScript Injection](Project19_JavaScriptInjection)|:white_check_mark:
 20|[Fireworks Night](Project20_FireworksNight)|:white_check_mark:
 21|[Local Notifications](Project21_LocalNotifications)|:white_check_mark:
 22|[Detect-a-Beacon](Project22_Detect-a-Beacon)|3 (& 1 not tested)

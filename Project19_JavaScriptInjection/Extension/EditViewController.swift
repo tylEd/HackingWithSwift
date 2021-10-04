@@ -1,5 +1,5 @@
 //
-//  ActionViewController.swift
+//  EditViewController.swift
 //  Extension
 //
 //  Created by Tyler Edwards on 9/13/21.
@@ -8,60 +8,39 @@
 import UIKit
 import MobileCoreServices
 
-class ActionViewController: UIViewController {
+class EditViewController: UIViewController {
     @IBOutlet var script: UITextView!
     
-    var pageTitle = ""
-    var pageURL = ""
+    var scriptURL: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(selectSample))
+        title = scriptURL.lastPathComponent.removingSuffix(".js")
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
-            if let itemProvider = inputItem.attachments?.first {
-                itemProvider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { [weak self] dict, error in
-                    guard let itemDict = dict as? NSDictionary else { return }
-                    guard let javaScriptValues = itemDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else { return }
-                    
-                    self?.pageTitle = javaScriptValues["title"] as? String ?? ""
-                    self?.pageURL = javaScriptValues["URL"] as? String ?? ""
-                    
-                    self?.loadScript()
-
-                    DispatchQueue.main.async { //NOTE: Nested closure doesn't need [weak self]
-                        self?.title = self?.pageTitle
-                    }
-                }
-            }
-        }
+        loadScript()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        saveScript()
     }
     
     func loadScript() {
-        let defaults = UserDefaults.standard
-        if let url = URL(string: pageURL),
-           let host = url.host,
-           let savedScript = defaults.string(forKey: host)
-        {
-            DispatchQueue.main.async { [weak self] in
-                self?.script.text = savedScript
+        DispatchQueue.main.async { [weak self] in
+            if let url = self?.scriptURL {
+                self?.script.text = try? String(contentsOf: url)
             }
         }
     }
     
     func saveScript() {
-        if let url = URL(string: pageURL),
-           let host = url.host
-        {
-            let defaults = UserDefaults.standard
-            defaults.set(script.text, forKey: host)
-        }
+        try? script.text.write(to: scriptURL, atomically: false, encoding: .utf8)
     }
 
     @IBAction func done() {
@@ -104,5 +83,5 @@ class ActionViewController: UIViewController {
         let selectedRange = script.selectedRange
         script.scrollRangeToVisible(selectedRange)
     }
-
+    
 }

@@ -14,10 +14,12 @@
 		2F0DE33226EF7D9F00341456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DE33126EF7D9F00341456 /* Assets.xcassets */; };
 		2F0DE33526EF7D9F00341456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DE33326EF7D9F00341456 /* LaunchScreen.storyboard */; };
 		2F0DE34326EF7F7500341456 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DE34226EF7F7500341456 /* Media.xcassets */; };
-		2F0DE34526EF7F7500341456 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0DE34426EF7F7500341456 /* ActionViewController.swift */; };
+		2F0DE34526EF7F7500341456 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0DE34426EF7F7500341456 /* EditViewController.swift */; };
 		2F0DE34826EF7F7500341456 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DE34626EF7F7500341456 /* MainInterface.storyboard */; };
 		2F0DE34C26EF7F7500341456 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2F0DE34026EF7F7500341456 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2F0DE35226EF822500341456 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DE35126EF822500341456 /* Action.js */; };
+		2FC3A532270A95DE00B1E3C3 /* ScriptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3A531270A95DE00B1E3C3 /* ScriptsViewController.swift */; };
+		2FC3A534270B6C3C00B1E3C3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3A533270B6C3C00B1E3C3 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +57,14 @@
 		2F0DE33626EF7D9F00341456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F0DE34026EF7F7500341456 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F0DE34226EF7F7500341456 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		2F0DE34426EF7F7500341456 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		2F0DE34426EF7F7500341456 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		2F0DE34726EF7F7500341456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		2F0DE34926EF7F7500341456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F0DE35126EF822500341456 /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
 		2F0DE35326EF84A700341456 /* Project19_JavaScriptInjection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project19_JavaScriptInjection.entitlements; sourceTree = "<group>"; };
 		2F0DE35426EF84BD00341456 /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extension.entitlements; sourceTree = "<group>"; };
+		2FC3A531270A95DE00B1E3C3 /* ScriptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsViewController.swift; sourceTree = "<group>"; };
+		2FC3A533270B6C3C00B1E3C3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +123,9 @@
 			children = (
 				2F0DE35426EF84BD00341456 /* Extension.entitlements */,
 				2F0DE34226EF7F7500341456 /* Media.xcassets */,
-				2F0DE34426EF7F7500341456 /* ActionViewController.swift */,
+				2FC3A531270A95DE00B1E3C3 /* ScriptsViewController.swift */,
+				2F0DE34426EF7F7500341456 /* EditViewController.swift */,
+				2FC3A533270B6C3C00B1E3C3 /* String+Ext.swift */,
 				2F0DE34626EF7F7500341456 /* MainInterface.storyboard */,
 				2F0DE34926EF7F7500341456 /* Info.plist */,
 				2F0DE35126EF822500341456 /* Action.js */,
@@ -240,7 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F0DE34526EF7F7500341456 /* ActionViewController.swift in Sources */,
+				2FC3A534270B6C3C00B1E3C3 /* String+Ext.swift in Sources */,
+				2F0DE34526EF7F7500341456 /* EditViewController.swift in Sources */,
+				2FC3A532270A95DE00B1E3C3 /* ScriptsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
