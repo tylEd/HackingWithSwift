@@ -11,6 +11,7 @@ import CoreImage
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var intensity: UISlider!
+    @IBOutlet var radius: UISlider!
     @IBOutlet var changeFilterButton: UIButton!
     
     var currentImage: UIImage!
@@ -30,6 +31,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         context = CIContext()
         currentFilter = CIFilter(name: "CISepiaTone")
+        
+        radius.value = (radius.maximumValue - radius.minimumValue) / 2
     }
     
     @objc func importPicture() {
@@ -103,6 +106,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         applyProcessing()
     }
     
+    @IBAction func radiusChanged(_ sender: Any) {
+        applyProcessing()
+    }
+    
     func applyProcessing() {
         // Inputs
         let inputKeys = currentFilter.inputKeys
@@ -112,7 +119,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(radius.value, forKey: kCIInputRadiusKey)
         }
         
         if inputKeys.contains(kCIInputScaleKey) {
