@@ -20,7 +20,7 @@ The final code for each project reflects all challenges attempted.
 11|[Pachinko](Project11_Pachinko)|:white_check_mark:
 12|UserDefaults [A](Project12a_UserDefaults) [B](Project12b_UserDefaults)|:white_check_mark:
 13|[Instafilter](Project13_Instafilter)|1&2
-14|[Whack-a-Penguin](Project14_Whack-a-Penguin)|
+14|[Whack-a-Penguin](Project14_Whack-a-Penguin)|:white_check_mark:
 15|[Animation](Project15_Animation)|:white_check_mark:
 16|[Capital Cities](Project16_CapitalCities)|:white_check_mark:
 17|[Space Race](Project17_SpaceRace)|:white_check_mark:

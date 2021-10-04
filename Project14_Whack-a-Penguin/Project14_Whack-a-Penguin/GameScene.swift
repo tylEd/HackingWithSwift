@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene {
     var slots = [WhackSlot]()
@@ -20,6 +21,10 @@ class GameScene: SKScene {
             gameScore.text = "Score: \(score)"
         }
     }
+    
+    // Speech Synthesis
+    var synth = AVSpeechSynthesizer()
+    var utterance: AVSpeechUtterance!
 
     override func didMove(to view: SKView) {
         let bg = SKSpriteNode(imageNamed: "whackBackground")
@@ -93,6 +98,17 @@ class GameScene: SKScene {
             gameOver.zPosition = 1
             addChild(gameOver)
             
+            let finalScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+            finalScoreLabel.position = gameOver.position
+            finalScoreLabel.position.y -= 100
+            finalScoreLabel.text = "Final Score: \(score)"
+            finalScoreLabel.horizontalAlignmentMode = .center
+            finalScoreLabel.zPosition = 5
+            addChild(finalScoreLabel)
+            
+            utterance = AVSpeechUtterance(string: "Game Over")
+            synth.speak(utterance)
+
             return
         }
         

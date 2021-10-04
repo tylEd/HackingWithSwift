@@ -13,6 +13,11 @@ class WhackSlot: SKNode {
     var isVisible = false
     var isHit = false
     
+    //NOTE: I not appropriate particle effects
+    let useParticles = false
+    static var mudEmitter = SKEmitterNode(fileNamed: "explode.sks")
+    static var hitEmitter = SKEmitterNode(fileNamed: "explosion.sks")
+
     func configure(at position: CGPoint) {
         self.position = position
         
@@ -50,6 +55,15 @@ class WhackSlot: SKNode {
             charNode.name = "charEnemy"
         }
         
+        // Particles
+        if useParticles,
+           let emitter = WhackSlot.mudEmitter?.copy() as? SKEmitterNode
+        {
+            emitter.position = charNode.position
+            emitter.position.y += 80
+            addChild(emitter)
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + (hideTime * 3.5)) { [weak self] in
             self?.hide()
         }
@@ -60,6 +74,14 @@ class WhackSlot: SKNode {
         
         charNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.05))
         isVisible = false
+        
+        // Particles
+        if useParticles,
+           let emitter = WhackSlot.mudEmitter?.copy() as? SKEmitterNode
+        {
+            emitter.position = charNode.position
+            addChild(emitter)
+        }
     }
     
     func hit() {
@@ -71,6 +93,14 @@ class WhackSlot: SKNode {
         
         let sequence = SKAction.sequence([delay, hide, notVisible])
         charNode.run(sequence)
+        
+        // Particles
+        if useParticles,
+           let emitter = WhackSlot.hitEmitter?.copy() as? SKEmitterNode
+        {
+            emitter.position = charNode.position
+            addChild(emitter)
+        }
     }
 
 }

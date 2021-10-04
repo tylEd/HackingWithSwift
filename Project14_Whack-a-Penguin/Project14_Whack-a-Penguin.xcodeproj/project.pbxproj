@@ -16,6 +16,8 @@
 		2FA3717126E8FA6B00741ABF /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA3716F26E8FA6B00741ABF /* whack.caf */; };
 		2FA3717226E8FA6B00741ABF /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2FA3717026E8FA6B00741ABF /* whackBad.caf */; };
 		2FA3717426E8FC3500741ABF /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA3717326E8FC3500741ABF /* WhackSlot.swift */; };
+		2FDF2A9A270B744D0045C0D3 /* explode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2A99270B744D0045C0D3 /* explode.sks */; };
+		2FDF2A9C270B761A0045C0D3 /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2A9B270B761A0045C0D3 /* explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		2FA3716F26E8FA6B00741ABF /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
 		2FA3717026E8FA6B00741ABF /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
 		2FA3717326E8FC3500741ABF /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
+		2FDF2A99270B744D0045C0D3 /* explode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explode.sks; sourceTree = "<group>"; };
+		2FDF2A9B270B761A0045C0D3 /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = explosion.sks; path = ../../Project17_SpaceRace/Project17_SpaceRace/explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				2FA3716926E8F9AF00741ABF /* Info.plist */,
 				2FA3716F26E8FA6B00741ABF /* whack.caf */,
 				2FA3717026E8FA6B00741ABF /* whackBad.caf */,
+				2FDF2A99270B744D0045C0D3 /* explode.sks */,
+				2FDF2A9B270B761A0045C0D3 /* explosion.sks */,
 			);
 			path = "Project14_Whack-a-Penguin";
 			sourceTree = "<group>";
@@ -137,7 +143,9 @@
 				2FA3716626E8F9AC00741ABF /* Main.storyboard in Resources */,
 				2FA3715D26E8F9AC00741ABF /* GameScene.sks in Resources */,
 				2FA3716826E8F9AF00741ABF /* Assets.xcassets in Resources */,
+				2FDF2A9C270B761A0045C0D3 /* explosion.sks in Resources */,
 				2FA3717126E8FA6B00741ABF /* whack.caf in Resources */,
+				2FDF2A9A270B744D0045C0D3 /* explode.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
