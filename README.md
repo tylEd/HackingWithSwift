@@ -28,7 +28,7 @@ The final code for each project reflects all challenges attempted.
 19|[JavaScript Injection](Project19_JavaScriptInjection)|:white_check_mark:
 20|[Fireworks Night](Project20_FireworksNight)|:white_check_mark:
 21|[Local Notifications](Project21_LocalNotifications)|:white_check_mark:
-22|[Detect-a-Beacon](Project22_Detect-a-Beacon)|3 (& 1 not tested)
+22|[Detect-a-Beacon](Project22_Detect-a-Beacon)|:white_check_mark:
 23|[Swifty Ninja](Project23_SwiftyNinja)|:white_check_mark:
 24|[Swift Strings](Project24_SwiftStrings)|:white_check_mark:
 25|[Selfie Share](Project25_SelfieShare)|:white_check_mark:

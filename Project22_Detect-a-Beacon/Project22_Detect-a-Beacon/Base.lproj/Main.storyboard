@@ -30,19 +30,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtD-Ke-J4E">
+                                <rect key="frame" x="0.0" y="44" width="414" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="YtD-Ke-J4E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4jV-5v-m35"/>
+                            <constraint firstItem="YtD-Ke-J4E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GBE-Em-mTx"/>
                             <constraint firstItem="lz4-Ya-EiG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="QPq-SE-SOD"/>
                             <constraint firstItem="xw5-cq-OL6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VYH-Ef-D3u"/>
                             <constraint firstItem="xw5-cq-OL6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Z8V-rE-vrd"/>
                             <constraint firstItem="lz4-Ya-EiG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="csp-HY-Gd5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YtD-Ke-J4E" secondAttribute="trailing" id="fbj-dH-7XF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="circle" destination="xw5-cq-OL6" id="apu-eb-F1w"/>
                         <outlet property="distanceReading" destination="lz4-Ya-EiG" id="s2n-AL-Xhi"/>
+                        <outlet property="idLabel" destination="YtD-Ke-J4E" id="Pum-tM-RfK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

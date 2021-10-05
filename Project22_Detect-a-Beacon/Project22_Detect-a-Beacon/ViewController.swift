@@ -10,6 +10,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var distanceReading: UILabel!
+    @IBOutlet var idLabel: UILabel!
     @IBOutlet var circle: UIView!
     
     var locationManager: CLLocationManager?
@@ -22,6 +23,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager?.requestAlwaysAuthorization()
         
         view.backgroundColor = .gray
+        
+        idLabel.text = ""
         
         circle.layer.cornerRadius = 128
         circle.layer.borderWidth = 1
@@ -52,6 +55,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager?.startMonitoring(for: beaconRegion)
         //Deprecated: locationManager?.startRangingBeacons(in: beaconRegion)
         locationManager?.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: beaconRegion.uuid, major: beaconRegion.major!.uint16Value, minor: beaconRegion.minor!.uint16Value))
+
+        let otherUUID = UUID(uuidString: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!
+        let otherBeaconRegion = CLBeaconRegion(uuid: otherUUID, major: 123, minor: 456, identifier: "OtherBeacon")
+
+        locationManager?.startMonitoring(for: otherBeaconRegion)
+        locationManager?.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: otherBeaconRegion.uuid, major: otherBeaconRegion.major!.uint16Value, minor: otherBeaconRegion.minor!.uint16Value))
     }
     
     func update(distance: CLProximity) {
@@ -81,10 +90,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        idLabel.text = region.identifier
+        
         let ac = UIAlertController(title: "Beacon Found", message: "\(region.identifier) is somewhere nearby.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
-        //TODO: Set a bool to prevent this continually showing up? Was this intended to be done in the didRange: method?
     }
     
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
