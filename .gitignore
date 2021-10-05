@@ -35,4 +35,4 @@ DerivedData
 Carthage/Build
 
 # Project 30 (the images are too large to commit)
-Project30_Instruments/Project30/Content/*.jpg
+UIKit/Project30_Instruments/Project30/Content/*.jpg
