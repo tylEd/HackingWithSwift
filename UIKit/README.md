@@ -1,9 +1,4 @@
-# Hacking with Swift (UIKit)
-
-My code from following the [Hacking with Swift iOS](https://www.hackingwithswift.com/read) course on UIKit.
-The final code for each project reflects all challenges attempted.
-
-## Completed Projects
+## Completed [UIKit Projects](https://www.hackingwithswift.com/read)
 
 #|Name|Challenges Completed
 ---|-------|--------------------
