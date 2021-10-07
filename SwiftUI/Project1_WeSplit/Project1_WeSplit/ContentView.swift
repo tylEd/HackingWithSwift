@@ -62,6 +62,7 @@ struct ContentView: View {
                 
                 Section(header: Text("Total after tip")) {
                     Text("$\(totalAfterTip, specifier: "%.2f")")
+                        .foregroundColor(tipPercentages[tipPercentage] == 0 ? .red : .primary)
                 }
                 
                 Section(header: Text("Amount per person")) {

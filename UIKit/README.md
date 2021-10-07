@@ -29,7 +29,7 @@
 25|[Selfie Share](Project25_SelfieShare)|:white_check_mark:
 26|[Marble Maze](Project26_MarbleMaze)|:white_check_mark:
 27|[Core Graphics](Project27_CoreGraphics)|:white_check_mark:
-28|[Secret Swift](Project28_SecretSwift)|:white_check_mark:<br>(3 is in Project12b)
+28|[Secret Swift](Project28_SecretSwift)|:white_check_mark:
 29|[Exploding Monkeys](Project29_ExplodingMonkeys)|:white_check_mark:
 30|[Instruments](Project30_Instruments)|:white_check_mark:
 
@@ -39,7 +39,7 @@
 ---|---
 31|[Multibrowser](Project31_Multibrowser)
 32|[SwiftSearcher](Project32_SwiftSearcher)
-33|[What's that Whistle?](Project33_WhatsThatWhistle)<br>Unfinished: No Apple developer program account at the time of attempt
+33|[What's that Whistle? (Unfinished)](Project33_WhatsThatWhistle)
 34|[Four in a Row](Project34_FourInARow)
 35|[Random Numbers](Project35_RandomNumbers)
 36|[Crashy Plane](Project36_CrashyPlane)
