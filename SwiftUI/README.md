@@ -5,3 +5,4 @@
 1|[WeSplit](Project1_WeSplit)|:white_check_mark:
 2|[Guess the Flag](Project2_GuessTheFlag)|:white_check_mark:
 3|[Views and Modifiers](Project3_ViewsAndModifiers)|:white_check_mark:
+4|[BetterRest](Project4_BetterRest)|:white_check_mark:
