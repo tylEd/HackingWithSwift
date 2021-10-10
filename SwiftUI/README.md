@@ -7,3 +7,4 @@
 3|[Views and Modifiers](Project3_ViewsAndModifiers)|:white_check_mark:
 4|[BetterRest](Project4_BetterRest)|:white_check_mark:
 5|[Word Scramble](Project5_WordScramble)|:white_check_mark:
+6|[Animation](Project6_Animation)|:white_check_mark:

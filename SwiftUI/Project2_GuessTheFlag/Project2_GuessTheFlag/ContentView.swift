@@ -15,11 +15,16 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var score = 0
     
+    // Animation
+    @State private var correctFlagRotationAmount = 0.0
+    @State private var otherFlagsOpacity = 1.0
+    @State private var wrongRotation = 0.0
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
-
+            
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag of")
@@ -34,7 +39,14 @@ struct ContentView: View {
                     Button(action: {
                         flagTapped(number)
                     }) {
-                        FlagImage(self.countries[number])
+                        if number == correctAnswer {
+                            FlagImage(self.countries[number])
+                                .rotation3DEffect(.degrees(correctFlagRotationAmount), axis: (x: 0, y: 1, z: 0))
+                        } else {
+                            FlagImage(self.countries[number])
+                                .opacity(otherFlagsOpacity)
+                                .rotation3DEffect(.degrees(wrongRotation), axis: (x: 1, y: 0, z: 0), anchor: .bottom)
+                        }
                     }
                 }
                 
@@ -57,9 +69,18 @@ struct ContentView: View {
         if number == correctAnswer {
             scoreTitle = "Correct!"
             score += 1
+            
+            withAnimation {
+                correctFlagRotationAmount += 360
+                otherFlagsOpacity = 0.25
+            }
         } else {
             scoreTitle = "Wrong! That's the flage of \(countries[number])"
             score -= 1
+            
+            withAnimation(.easeIn) {
+                wrongRotation = 90
+            }
         }
         
         showingScore = true
@@ -68,6 +89,11 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        
+        // Reset Animations
+        correctFlagRotationAmount = 0
+        otherFlagsOpacity = 1
+        wrongRotation = 0
     }
     
 }
