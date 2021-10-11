@@ -8,3 +8,4 @@
 4|[BetterRest](Project4_BetterRest)|:white_check_mark:
 5|[Word Scramble](Project5_WordScramble)|:white_check_mark:
 6|[Animation](Project6_Animation)|:white_check_mark:
+7|[iExpense](Project7_iExpense)|:white_check_mark:
