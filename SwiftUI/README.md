@@ -15,3 +15,4 @@
 11|[Bookworm](Project11_Bookworm)|:white_check_mark:
 12|[CoreData](Project12_CoreData)|:white_check_mark:
 13|[Instafilter](Project13_Instafilter)|:white_check_mark:
+14|[Bucket List](Project14_BucketList)|:white_check_mark:
