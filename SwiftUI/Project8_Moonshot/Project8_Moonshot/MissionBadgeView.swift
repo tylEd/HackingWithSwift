@@ -21,6 +21,7 @@ struct MissionBadgeView: View {
             Image(mission.image)
                 .resizable()
                 .frame(width: 44, height: 44)
+                .accessibility(label: Text("Mission badge icon"))
             
             VStack(alignment: .leading) {
                 Text(mission.displayName)
@@ -33,6 +34,7 @@ struct MissionBadgeView: View {
                 case .date:
                     Text(mission.formattedLaunchDate)
                         .foregroundColor(.secondary)
+                        .accessibility(label: Text("\(mission.launchDate == nil ? "Date not available" : mission.formattedLaunchDate)"))
                 }
             }
             

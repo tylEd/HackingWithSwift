@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Moonshot")
-            .navigationBarItems( trailing: displayToggleBarButton())
+            .navigationBarItems(trailing: displayToggleBarButton())
         }
     }
     

@@ -29,6 +29,7 @@ struct AstronautView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: geo.size.width)
+                        .accessibility(hidden: true)
                     
                     Text(astronaut.description)
                         .padding()

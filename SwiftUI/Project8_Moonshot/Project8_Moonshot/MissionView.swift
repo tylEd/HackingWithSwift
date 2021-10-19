@@ -43,6 +43,7 @@ struct MissionView: View {
                         .scaledToFit()
                         .frame(maxWidth: geo.size.width * 0.7)
                         .padding(.top)
+                        .accessibility(hidden: true)
                     
                     Text(mission.formattedLaunchDate)
                         .foregroundColor(.secondary)
