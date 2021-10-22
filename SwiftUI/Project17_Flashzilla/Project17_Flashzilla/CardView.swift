@@ -11,15 +11,16 @@ import SwiftUI
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
-    
+    @EnvironmentObject var settings: Settings
+
     let card: Card
     
-    var removal: (() -> Void)? = nil
+    var removal: ((_ failed: Bool) -> Void)? = nil
     
     @State private var feedback = UINotificationFeedbackGenerator()
     @State private var isShowingAnswer = false
     @State private var offset = CGSize.zero
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -34,7 +35,7 @@ struct CardView: View {
                     differentiateWithoutColor
                         ? nil
                         : RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(offset.width > 0 ? Color.green : Color.red)
+                        .fill(bgColor())
                 )
                 .shadow(radius: 10)
             
@@ -74,11 +75,14 @@ struct CardView: View {
                     if abs(self.offset.width) > 100 {
                         if self.offset.width > 0 {
                             self.feedback.notificationOccurred(.success)
+                            self.removal?(false)
                         } else {
                             self.feedback.notificationOccurred(.error)
+                            self.removal?(true)
+                            if settings.retry {
+                                self.offset = .zero
+                            }
                         }
-                        
-                        self.removal?()
                     } else {
                         self.offset = .zero
                     }
@@ -88,6 +92,16 @@ struct CardView: View {
             self.isShowingAnswer.toggle()
         }
         .animation(.spring())
+    }
+    
+    func bgColor() -> Color {
+        if offset.width > 0 {
+            return Color.green
+        } else if offset.width < 0 {
+            return Color.red
+        } else {
+            return Color.white
+        }
     }
 }
 

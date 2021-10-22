@@ -24,11 +24,14 @@ struct ContentView: View {
     @State private var showingEditScreen = false
     
     @State private var showingSettingsScreen = false
-    @State private var retry = false
+    @StateObject private var settings = Settings()
 
     @State private var timeRemaining = 100
     @State private var isActive = true
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    func other() {
+    }
     
     var body: some View {
         ZStack {
@@ -50,10 +53,12 @@ struct ContentView: View {
                     )
                 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: self.cards[index]) {
+                    //NOTE: This works, but I would like to the the Array() out of it to prevent an allocation.
+                    //      Could be a lot more costly on a larger deck.
+                    ForEach(Array(cards.enumerated()), id: \.element) { index, card in
+                        CardView(card: card) { failed in
                             withAnimation {
-                                self.removeCard(at: index)
+                                self.removeCard(at: index, replace: failed)
                             }
                         }
                         .stacked(at: index, in: self.cards.count)
@@ -129,7 +134,7 @@ struct ContentView: View {
                     HStack {
                         Button(action: {
                             withAnimation {
-                                self.removeCard(at: self.cards.count - 1)
+                                self.removeCard(at: self.cards.count - 1, replace: true)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
@@ -143,7 +148,7 @@ struct ContentView: View {
                         
                         Button(action: {
                             withAnimation {
-                                self.removeCard(at: self.cards.count - 1)
+                                self.removeCard(at: self.cards.count - 1, replace: false)
                             }
                         }) {
                             Image(systemName: "checkmark.circle")
@@ -160,6 +165,7 @@ struct ContentView: View {
                 }
             }
         }
+        .environmentObject(settings)
         .onReceive(timer) { time in
             guard self.isActive else { return }
             if self.timeRemaining > 0 {
@@ -182,15 +188,20 @@ struct ContentView: View {
             EditCards()
         }
         .sheet(isPresented: $showingSettingsScreen, onDismiss: resetCards) {
-            Settings(retry: $retry)
+            SettingsView()
+                .environmentObject(settings)
         }
         .onAppear(perform: resetCards)
     }
     
-    func removeCard(at index: Int) {
+    func removeCard(at index: Int, replace: Bool) {
         guard index >= 0 else { return }
         
         let card = cards.remove(at: index)
+        
+        if settings.retry && replace {
+            cards.insert(card, at: 0)
+        }
 
         if cards.isEmpty {
             isActive = false

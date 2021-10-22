@@ -18,4 +18,5 @@
 14|[Bucket List](Project14_BucketList)|:white_check_mark:
 15|[Accessibility](Project15_Accessibility)|:white_check_mark:
 16|[Hot Prospects](Project16_HotProspects)|:white_check_mark:
-17|[Flashzilla](Project17_Flashzilla)|1
+17|[Flashzilla](Project17_Flashzilla)|:white_check_mark:
+18|[Layout and Geometry](Project18_LayoutAndGeometry)|

@@ -5,30 +5,14 @@
 //  Created by Tyler Edwards on 10/21/21.
 //
 
-import SwiftUI
+import Foundation
 
-struct Settings: View {
-    @Environment(\.presentationMode) var presentationMode
-    @Binding var retry: Bool
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                Toggle("Retry Failed Cards", isOn: $retry)
-            }
-            .navigationBarTitle("Settings")
-            .navigationBarItems(trailing: Button("Done", action: dismiss))
+class Settings: ObservableObject {
+    static let retryKey = "Retry"
+
+    @Published var retry: Bool = UserDefaults.standard.bool(forKey: Settings.retryKey) {
+        willSet {
+            UserDefaults.standard.setValue(newValue, forKey: Settings.retryKey)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
-}
-
-struct Settings_Previews: PreviewProvider {
-    static var previews: some View {
-        Settings(retry: .constant(true))
     }
 }
