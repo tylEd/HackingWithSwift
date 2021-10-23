@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var errorTitle = ""
     @State private var errorMsg = ""
     @State private var showingError = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -24,13 +24,19 @@ struct ContentView: View {
                     .autocapitalization(.none)
                     .padding()
                 
-                List(usedWords, id: \.self) { word in
-                    HStack {
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
+                GeometryReader { listGeo in
+                    List(usedWords, id: \.self) { word in
+                        GeometryReader { rowGeo in
+                            HStack {
+                                Image(systemName: "\(word.count).circle")
+                                    .foregroundColor(Color(red: 1.0 - rowLocation(listGeo, rowGeo), green: 0.3, blue: 1.0))
+                                Text(word)
+                            }
+                            .offset(x: rowOffset(listGeo, rowGeo))
+                            .accessibilityElement(children: .ignore)
+                            .accessibility(label: Text("\(word), \(word.count) letters"))
+                        }
                     }
-                    .accessibilityElement(children: .ignore)
-                    .accessibility(label: Text("\(word), \(word.count) letters"))
                 }
                 
                 Text("Score: \(clacScore())")
@@ -44,6 +50,23 @@ struct ContentView: View {
                       dismissButton: .default(Text("OK")))
             }
         }
+    }
+    
+    func rowOffset(_ listGeo: GeometryProxy, _ rowGeo: GeometryProxy) -> CGFloat {
+        let loc = rowLocation(listGeo, rowGeo)
+        
+        if loc > 0.8 {
+            let fraction = loc - 0.8
+            return CGFloat(fraction * 200)
+        }
+        
+        return 0
+    }
+    
+    func rowLocation(_ listGeo: GeometryProxy, _ rowGeo: GeometryProxy) -> Double {
+        let top = listGeo.frame(in: .global).minY
+        let location = (rowGeo.frame(in: .global).midY - top) / listGeo.size.height
+        return Double(location)
     }
     
     func addNewWord() {
@@ -77,7 +100,7 @@ struct ContentView: View {
             wordError(title: "That's just the root word.", msg: "You'll have to be more creative than that.")
             return
         }
-
+        
         usedWords.insert(answer, at: 0)
         newWord = ""
     }

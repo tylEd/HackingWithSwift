@@ -19,4 +19,5 @@
 15|[Accessibility](Project15_Accessibility)|:white_check_mark:
 16|[Hot Prospects](Project16_HotProspects)|:white_check_mark:
 17|[Flashzilla](Project17_Flashzilla)|:white_check_mark:
-18|[Layout and Geometry](Project18_LayoutAndGeometry)|
+18|[Layout and Geometry](Project18_LayoutAndGeometry)|:white_check_mark:
+19|[Snow Seeker](Project19_SnowSeeker)|:white_check_mark:

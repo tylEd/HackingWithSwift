@@ -38,19 +38,28 @@ struct MissionView: View {
         GeometryReader { geo in
             ScrollView(.vertical) {
                 VStack {
-                    Image(mission.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: geo.size.width * 0.7)
-                        .padding(.top)
-                        .accessibility(hidden: true)
-                    
+                    GeometryReader { localGeo in
+                        let frame = localGeo.frame(in: .named("Scroll"))
+                        let visibleScale: CGFloat = frame.minY < 0 ? (frame.height + frame.minY) / frame.height : 1.0
+                        let scale = max(visibleScale, 0.5)
+                        Image(mission.image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: localGeo.size.width, height: localGeo.size.height)
+                            .scaleEffect(scale)
+                            .offset(y: (1-scale) / 2 * localGeo.size.height)
+                            .accessibility(hidden: true)
+                    }
+                    .frame(height: geo.size.width * 0.7)
+                    .padding(.top)
+
                     Text(mission.formattedLaunchDate)
                         .foregroundColor(.secondary)
                     
                     Text(mission.description)
+                        .fixedSize(horizontal: false, vertical: true)
                         .padding()
-                    
+
                     ForEach(astronauts, id: \.role) { crewMember in
                         NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
                             HStack {
@@ -78,6 +87,7 @@ struct MissionView: View {
                     Spacer(minLength: 25)
                 }
             }
+            .coordinateSpace(name: "Scroll")
         }
         .navigationBarTitle(Text(mission.displayName), displayMode: .inline)
     }
